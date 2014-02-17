@@ -12,7 +12,6 @@ import com.jerry.zkConfigutil.annotation.FieldZkConfigurable;
 import com.jerry.zkConfigutil.annotation.TypeZkConfigurable;
 import com.jerry.zkConfigutil.exception.NotRegistedException;
 import com.jerry.zkConfigutil.zkserializer.StringZkSerializer;
-import com.jerry.zkconfigutil.demo.Demo;
 import com.jerry.zkconfigutil.resolve.Resolve;
 import com.jerry.zkconfigutil.util.Updater;
 
@@ -129,21 +128,6 @@ public final class ZkConfigUtil implements IZkDataListener {
 			pathName = pathName.substring(1);
 		}
 		return parent + pathName;
-	}
-
-	public static void main(String[] args) throws InterruptedException,
-			InstantiationException, IllegalAccessException,
-			NotRegistedException {
-		ZkConfigUtil app = new ZkConfigUtil("localhost:2181");
-
-		app.register(Demo.class, true);
-		while (true) {
-			app.loop();
-		}
-	}
-
-	public void loop() throws InterruptedException {
-		Thread.sleep(2000L);
 	}
 
 	@Override
