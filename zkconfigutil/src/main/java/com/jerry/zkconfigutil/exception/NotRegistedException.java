@@ -1,4 +1,4 @@
-package com.jerry.zkConfigutil.exception;
+package com.jerry.zkconfigutil.exception;
 
 public class NotRegistedException extends Exception {
 

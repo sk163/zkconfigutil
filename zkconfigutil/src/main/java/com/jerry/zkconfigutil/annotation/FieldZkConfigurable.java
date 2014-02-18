@@ -1,4 +1,4 @@
-package com.jerry.zkConfigutil.annotation;
+package com.jerry.zkconfigutil.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

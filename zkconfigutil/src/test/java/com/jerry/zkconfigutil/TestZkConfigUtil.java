@@ -1,8 +1,8 @@
 package com.jerry.zkconfigutil;
 
-import com.jerry.zkConfigutil.app.ZkConfigUtil;
-import com.jerry.zkConfigutil.exception.NotRegistedException;
+import com.jerry.zkconfigutil.app.ZkConfigUtil;
 import com.jerry.zkconfigutil.demo.Demo;
+import com.jerry.zkconfigutil.exception.NotRegistedException;
 
 public final class TestZkConfigUtil {
 

@@ -1,4 +1,4 @@
-package com.jerry.zkConfigutil.zkserializer;
+package com.jerry.zkconfigutil.zkserializer;
 
 import java.nio.charset.Charset;
 

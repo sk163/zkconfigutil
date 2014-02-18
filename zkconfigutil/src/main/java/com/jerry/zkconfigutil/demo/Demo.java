@@ -1,7 +1,7 @@
 package com.jerry.zkconfigutil.demo;
 
-import com.jerry.zkConfigutil.annotation.FieldZkConfigurable;
-import com.jerry.zkConfigutil.annotation.TypeZkConfigurable;
+import com.jerry.zkconfigutil.annotation.FieldZkConfigurable;
+import com.jerry.zkconfigutil.annotation.TypeZkConfigurable;
 import com.jerry.zkconfigutil.resolve.DemoResolve.DemoF1Resolve;
 import com.jerry.zkconfigutil.resolve.DemoResolve.DemoF2Resolve;
 import com.jerry.zkconfigutil.resolve.DemoResolve.DemoF3Resolve;

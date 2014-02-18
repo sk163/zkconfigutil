@@ -1,4 +1,4 @@
-package com.jerry.zkConfigutil.app;
+package com.jerry.zkconfigutil.app;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -8,12 +8,12 @@ import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
 import org.apache.log4j.Logger;
 
-import com.jerry.zkConfigutil.annotation.FieldZkConfigurable;
-import com.jerry.zkConfigutil.annotation.TypeZkConfigurable;
-import com.jerry.zkConfigutil.exception.NotRegistedException;
-import com.jerry.zkConfigutil.zkserializer.StringZkSerializer;
+import com.jerry.zkconfigutil.annotation.FieldZkConfigurable;
+import com.jerry.zkconfigutil.annotation.TypeZkConfigurable;
+import com.jerry.zkconfigutil.exception.NotRegistedException;
 import com.jerry.zkconfigutil.resolve.Resolve;
 import com.jerry.zkconfigutil.util.Updater;
+import com.jerry.zkconfigutil.zkserializer.StringZkSerializer;
 
 public final class ZkConfigUtil implements IZkDataListener {
 
