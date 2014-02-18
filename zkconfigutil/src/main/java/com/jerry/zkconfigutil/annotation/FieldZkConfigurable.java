@@ -7,17 +7,33 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import com.jerry.zkconfigutil.resolve.AbstractResolve;
-
+/**
+ * annotation target field
+ * @author jerry
+ *
+ */
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface FieldZkConfigurable {
+	/**
+	 * path on zookeeper default ""
+	 * @return
+	 */
 	String path() default "";
 
+	/**
+	 * if need dynamic update by zookeeper default false
+	 * @return
+	 */
 	boolean dynamicUpdate() default false;
 	
 	Class<? extends AbstractResolve> resolve();
 	
+	/**
+	 * useless
+	 * @return
+	 */
 	@Deprecated()
 	String defaultValue() default "";
 }
