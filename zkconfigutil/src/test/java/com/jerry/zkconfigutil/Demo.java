@@ -14,12 +14,12 @@ import com.jerry.zkconfigutil.annotation.TypeZkConfigurable;
 @TypeZkConfigurable(path="/test/jerry", server="localhost:2181", useOwnZkServer=false)
 public final class Demo {
 	
-	@FieldZkConfigurable(resove=DemoF1Resolve.class, dynamicUpdate=true)
+	@FieldZkConfigurable(resolve=DemoF1Resolve.class, dynamicUpdate=true)
 	public static String F1 = "F1";
 	
-	@FieldZkConfigurable(resove=DemoF2Resolve.class, dynamicUpdate=true)
+	@FieldZkConfigurable(resolve=DemoF2Resolve.class, dynamicUpdate=true)
 	public static String F2 = "F2";
 	
-	@FieldZkConfigurable(resove=DemoF3Resolve.class, dynamicUpdate=true)
+	@FieldZkConfigurable(resolve=DemoF3Resolve.class, dynamicUpdate=true)
 	public static Boolean F3 = false;
 }

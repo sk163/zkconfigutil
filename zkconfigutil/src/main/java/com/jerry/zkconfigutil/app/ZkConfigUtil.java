@@ -75,7 +75,7 @@ public final class ZkConfigUtil implements IZkDataListener {
 			String value = zkClient.readData(fieldPath, true);
 			logger.debug(fieldPath + " : " + value);
 
-			Class<? extends AbstractResolve> resolve = fieldZkConfigurable.resove();
+			Class<? extends AbstractResolve> resolve = fieldZkConfigurable.resolve();
 
 			Resolve resolveInstance = resolve.newInstance();
 

@@ -16,7 +16,7 @@ public @interface FieldZkConfigurable {
 
 	boolean dynamicUpdate() default false;
 	
-	Class<? extends AbstractResolve> resove();
+	Class<? extends AbstractResolve> resolve();
 	
 	@Deprecated()
 	String defaultValue() default "";
