@@ -5,7 +5,7 @@ import com.jerry.zkconfigutil.demo.Demo;
 public final class DemoResolve {
 	
 	
-	public static final class DemoF1Resolve implements Resolve{
+	public static final class DemoF1Resolve extends AbstractResolve{
 
 		@Override
 		public String resolve() {
@@ -21,7 +21,7 @@ public final class DemoResolve {
 		
 	}
 	
-	public static final class DemoF2Resolve implements Resolve{
+	public static final class DemoF2Resolve extends AbstractResolve{
 
 		@Override
 		public String resolve() {
@@ -37,7 +37,7 @@ public final class DemoResolve {
 		
 	}
 	
-	public static final class DemoF3Resolve implements Resolve{
+	public static final class DemoF3Resolve extends AbstractResolve{
 
 		@Override
 		public String resolve() {

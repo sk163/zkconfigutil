@@ -4,6 +4,11 @@ import com.jerry.zkconfigutil.app.ZkConfigUtil;
 import com.jerry.zkconfigutil.demo.Demo;
 import com.jerry.zkconfigutil.exception.NotRegistedException;
 
+/**
+ * not JUNIT
+ * @author JERRY
+ *
+ */
 public final class TestZkConfigUtil {
 
 	public static void main(String[] args) throws InterruptedException,

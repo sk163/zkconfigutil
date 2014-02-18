@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import com.jerry.zkconfigutil.annotation.FieldZkConfigurable;
 import com.jerry.zkconfigutil.annotation.TypeZkConfigurable;
 import com.jerry.zkconfigutil.exception.NotRegistedException;
+import com.jerry.zkconfigutil.resolve.AbstractResolve;
 import com.jerry.zkconfigutil.resolve.Resolve;
 import com.jerry.zkconfigutil.util.Updater;
 import com.jerry.zkconfigutil.zkserializer.StringZkSerializer;
@@ -74,7 +75,7 @@ public final class ZkConfigUtil implements IZkDataListener {
 			String value = zkClient.readData(fieldPath, true);
 			logger.debug(fieldPath + " : " + value);
 
-			Class<? extends Resolve> resolve = fieldZkConfigurable.resove();
+			Class<? extends AbstractResolve> resolve = fieldZkConfigurable.resove();
 
 			Resolve resolveInstance = resolve.newInstance();
 

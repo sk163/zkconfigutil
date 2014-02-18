@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jerry.zkconfigutil.resolve.Resolve;
+import com.jerry.zkconfigutil.resolve.AbstractResolve;
 
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
@@ -16,7 +16,7 @@ public @interface FieldZkConfigurable {
 
 	boolean dynamicUpdate() default false;
 	
-	Class<? extends Resolve> resove();
+	Class<? extends AbstractResolve> resove();
 	
 	@Deprecated()
 	String defaultValue() default "";
