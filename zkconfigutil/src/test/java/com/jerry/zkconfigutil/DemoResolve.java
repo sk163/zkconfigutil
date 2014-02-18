@@ -1,6 +1,6 @@
-package com.jerry.zkconfigutil.resolve;
+package com.jerry.zkconfigutil;
 
-import com.jerry.zkconfigutil.demo.Demo;
+import com.jerry.zkconfigutil.resolve.AbstractResolve;
 
 public final class DemoResolve {
 	

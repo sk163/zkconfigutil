@@ -1,6 +1,5 @@
 package com.jerry.zkconfigutil;
 
-import com.jerry.zkconfigutil.demo.Demo;
 import com.jerry.zkconfigutil.resolve.Resolve;
 
 public final class TestClass {
