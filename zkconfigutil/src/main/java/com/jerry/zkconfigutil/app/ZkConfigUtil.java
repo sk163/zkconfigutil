@@ -28,11 +28,11 @@ public final class ZkConfigUtil implements IZkDataListener {
 	public final void register(Class<?> cla, boolean isCreateIfNUll)
 			throws NotRegistedException, InstantiationException,
 			IllegalAccessException {
-		TypeZkConfigurable typeZkConfigurable = cla
-				.getAnnotation(TypeZkConfigurable.class);
-		if (typeZkConfigurable == null) {
+		if (!cla.isAnnotationPresent(TypeZkConfigurable.class)) {
 			throw new NotRegistedException();
 		}
+		TypeZkConfigurable typeZkConfigurable = cla
+				.getAnnotation(TypeZkConfigurable.class);
 
 		boolean useOwnZkServer = typeZkConfigurable.useOwnZkServer();
 
@@ -58,12 +58,12 @@ public final class ZkConfigUtil implements IZkDataListener {
 		final Field[] fields = cla.getDeclaredFields();
 
 		for (Field field : fields) {
+			if (!field.isAnnotationPresent(FieldZkConfigurable.class))
+				continue;
 			logger.debug("field : " + field.getName() + "   type : "
 					+ field.getType().getSimpleName());
 			FieldZkConfigurable fieldZkConfigurable = field
 					.getAnnotation(FieldZkConfigurable.class);
-			if (fieldZkConfigurable == null)
-				continue;
 
 			final String fieldPath;
 			if (fieldZkConfigurable.path().equals("")) {
@@ -75,7 +75,8 @@ public final class ZkConfigUtil implements IZkDataListener {
 			String value = zkClient.readData(fieldPath, true);
 			logger.debug(fieldPath + " : " + value);
 
-			Class<? extends AbstractResolve> resolve = fieldZkConfigurable.resolve();
+			Class<? extends AbstractResolve> resolve = fieldZkConfigurable
+					.resolve();
 
 			Resolve resolveInstance = resolve.newInstance();
 
