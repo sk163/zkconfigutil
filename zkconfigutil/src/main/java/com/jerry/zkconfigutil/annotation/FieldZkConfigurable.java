@@ -23,7 +23,7 @@ public @interface FieldZkConfigurable {
 	String path() default "";
 
 	/**
-	 * if need dynamic update by zookeeper default false
+	 * is need dynamic update by zookeeper default false
 	 * @return
 	 */
 	boolean dynamicUpdate() default false;
