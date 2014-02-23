@@ -109,12 +109,12 @@ public final class ZkConfigUtil implements IZkDataListener {
 
 	private final ZkClient makeZkClient(String server) {
 
-		if (zkClientCache.containsKey(server))
-			return zkClientCache.get(server);
+		if (this.zkClientCache.containsKey(server))
+			return this.zkClientCache.get(server);
 
 		final ZkClient zkClient = new ZkClient(server, 30000, 30000,
 				new StringZkSerializer());
-		zkClientCache.put(server, zkClient);
+		this.zkClientCache.put(server, zkClient);
 		return zkClient;
 	}
 
