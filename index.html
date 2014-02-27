@@ -1,82 +1,114 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Zkconfigutil by jerrysearch</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=640" />
 
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Zkconfigutil by jerrysearch</title>
   </head>
+
   <body>
+    <a id="forkme_banner" href="https://github.com/jerrysearch/zkconfigutil">View on GitHub</a>
+    <div class="shell">
 
       <header>
-        <h1>Zkconfigutil</h1>
-        <p>configuration your project with zookeeper,it work with java annotation and easy play</p>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Zkconfigutil</h1>
+            <h2>configuration your project with zookeeper,it work with java annotation and easy play</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
       </header>
 
-      <div id="banner">
-        <span id="logo"></span>
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/jerrysearch/zkconfigutil/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/jerrysearch/zkconfigutil/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
 
-        <a href="https://github.com/jerrysearch/zkconfigutil" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/jerrysearch/zkconfigutil/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/jerrysearch/zkconfigutil/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
 
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
         <h3>
 <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<h3>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>about</h3>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>这是一个非常好用的使用zookeeper配置工程的组件，使用java注解实现，想对哪个类的哪个属性进行配置加上相应的注解即可，并且可以实现动态监听，假如你是分布式工程，在zookeeper上修改值会立即被通知到所有机器，在这个过程中您只需要实现需要配置的属性的resolve，并用zkconfigutil.register(class, true),实现注册即可</p>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="a-simple-case" class="anchor" href="#a-simple-case"><span class="octicon octicon-link"></span></a>a simple case</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>`
+/**</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<ul>
+<li>just test</li>
+<li>
+<p><a href="https://github.com/author" class="user-mention">@author</a> JERRY
+*
+*/
+@TypeZkConfigurable(path="/test/jerry", server="localhost:2181", useOwnZkServer=false)
+public final class Demo {</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>@FieldZkConfigurable(resolve=DemoF1Resolve.class, dynamicUpdate=true)
+public static String F1 = "F1";</p>
+
+<p>@FieldZkConfigurable(resolve=DemoF2Resolve.class, dynamicUpdate=true)
+public static String F2 = "F2";</p>
+
+<p>@FieldZkConfigurable(resolve=DemoF3Resolve.class, dynamicUpdate=true)
+public static Boolean F3 = false;
+}
+`</p>
+</li>
+</ul><p><code>
+ZkConfigUtil app = new ZkConfigUtil("localhost:2181");
+app.register(Demo.class, true);
+</code></p>
 
 <h3>
 <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<pre><code>Author：
+  NAME：Jerry 
+  QQ：564508735
+  EMAIL：search.jerry@gmail.com 
+</code></pre>
       </section>
+
       <footer>
-        <p>Project maintained by <a href="https://github.com/jerrysearch">jerrysearch</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/jerrysearch">jerrysearch</a> can be found on <a href="https://github.com/jerrysearch/zkconfigutil">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
       </footer>
+
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
     
   </body>
 </html>
