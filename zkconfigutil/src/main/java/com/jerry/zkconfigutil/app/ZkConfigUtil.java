@@ -25,7 +25,7 @@ public final class ZkConfigUtil implements IZkDataListener {
 		this.globalZkServer = globalZkServer;
 	}
 
-	public final void register(Class<?> cla, boolean isCreateIfNUll)
+	public final synchronized void register(Class<?> cla, boolean isCreateIfNUll)
 			throws NotRegistedException, InstantiationException,
 			IllegalAccessException {
 		if (!cla.isAnnotationPresent(TypeZkConfigurable.class)) {
