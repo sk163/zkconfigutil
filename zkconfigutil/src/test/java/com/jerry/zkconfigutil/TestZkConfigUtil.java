@@ -14,7 +14,7 @@ public final class TestZkConfigUtil {
 			InstantiationException, IllegalAccessException,
 			NotRegistedException {
 		
-		ZkConfigUtil app = new ZkConfigUtil("localhost:2181");
+		ZkConfigUtil app = new ZkConfigUtil("10.32.22.8:2181");
 		app.register(Demo.class, true);
 		
 		while (true) {
