@@ -1,5 +1,7 @@
 package com.jerry.zkconfigutil.resolve;
 
+import org.apache.log4j.Logger;
+
 /**
  * nothing 
  * just for class<? extends Resolve>.newInstance()
@@ -9,5 +11,6 @@ package com.jerry.zkconfigutil.resolve;
  */
 public abstract class AbstractResolve implements Resolve {
 
+	public Logger logger = Logger.getLogger(getClass());
 	public AbstractResolve(){}
 }
