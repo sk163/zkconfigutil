@@ -12,6 +12,7 @@ import com.jerry.zkconfigutil.annotation.FieldZkConfigurable;
 import com.jerry.zkconfigutil.annotation.TypeZkConfigurable;
 import com.jerry.zkconfigutil.exception.NotRegistedException;
 import com.jerry.zkconfigutil.resolve.AbstractResolve;
+import com.jerry.zkconfigutil.resolve.ReflectResolve;
 import com.jerry.zkconfigutil.resolve.Resolve;
 import com.jerry.zkconfigutil.util.Updater;
 import com.jerry.zkconfigutil.zkserializer.StringZkSerializer;
@@ -77,8 +78,12 @@ public final class ZkConfigUtil implements IZkDataListener {
 
 			Class<? extends AbstractResolve> resolve = fieldZkConfigurable
 					.resolve();
-
-			Resolve resolveInstance = resolve.newInstance();
+			Resolve resolveInstance;
+			if (resolve == ReflectResolve.class) {
+				resolveInstance = new ReflectResolve(cla, field);
+			} else {
+				resolveInstance = resolve.newInstance();
+			}
 
 			/**
 			 * Dosen't have value
