@@ -7,6 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import com.jerry.zkconfigutil.resolve.AbstractResolve;
+import com.jerry.zkconfigutil.resolve.ReflectResolve;
 /**
  * annotation target field
  * @author jerry
@@ -28,7 +29,7 @@ public @interface FieldZkConfigurable {
 	 */
 	boolean dynamicUpdate() default false;
 	
-	Class<? extends AbstractResolve> resolve();
+	Class<? extends AbstractResolve> resolve() default ReflectResolve.class;
 	
 	/**
 	 * useless
