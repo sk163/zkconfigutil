@@ -45,10 +45,18 @@ public final class ReflectResolve extends AbstractResolve {
 			value = Float.valueOf(src);
 		} else if (type == Short.class) {
 			value = Short.valueOf(src);
-		}else if(type == VisualType.class){
-			value = VisualType.valueOf(src);
-		}else{
-			logger.warn("dosent have this type and return : "+type.getSimpleName());
+		} else if (VisualType.class.isAssignableFrom(type)) {
+			try {
+				value = ((VisualType) field.get(cla)).valueOf(src);
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+			;
+		} else {
+			logger.warn("dosent have this type and return : "
+					+ type.getSimpleName());
 			return;
 		}
 		try {
