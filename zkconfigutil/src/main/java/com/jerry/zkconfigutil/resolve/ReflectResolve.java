@@ -28,7 +28,6 @@ public final class ReflectResolve extends AbstractResolve {
 
 	@Override
 	public void dResolve(String src) {
-		logger.debug("field type = " + field.getType().getSimpleName());
 		Object value = null;
 		Class<?> type = field.getType();
 		if (type == String.class) {
