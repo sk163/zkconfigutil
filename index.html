@@ -39,22 +39,45 @@
 <h3>
 <a name="a-simple-case" class="anchor" href="#a-simple-case"><span class="octicon octicon-link"></span></a>a simple case</h3>
 
-<hr><p>@TypeZkConfigurable(path="/test/jerry", server="localhost:2181", useOwnZkServer=false)
-  public final class Demo {</p>
+<hr><p>@TypeZkConfigurable(path = "/test/jerry", server = "localhost:2181", useOwnZkServer = false)
+public final class Demo {</p>
 
-<pre><code>    @FieldZkConfigurable(resolve=DemoF1Resolve.class, dynamicUpdate=true)
-    public static String F1 = "F1";
+<pre><code>@FieldZkConfigurable(resolve = DemoResolve.DemoF1Resolve.class, dynamicUpdate = true)
+public static String F1 = "F1";
 
-    @FieldZkConfigurable(resolve=DemoF2Resolve.class, dynamicUpdate=true)
-    public static String F2 = "F2";
+@FieldZkConfigurable(dynamicUpdate = true)
+public static String F2 = "F2";
 
-    @FieldZkConfigurable(resolve=DemoF3Resolve.class, dynamicUpdate=true)
-    public static Boolean F3 = false;
+@FieldZkConfigurable(dynamicUpdate = true)
+public static Boolean F3 = false;
+
+@FieldZkConfigurable(dynamicUpdate = true)
+public static Boolean F4 = true;
+
+@FieldZkConfigurable(dynamicUpdate = true)
+public static TestVisualType testVisualType = new TestVisualType();
+
+static class TestVisualType extends VisualType {
+    String s = "123";
+
+    @Override
+    public VisualType valueOf(String src) {
+        this.s = src;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return s;
+    }
+
 }
 </code></pre>
 
-<hr><p>ZkConfigUtil app = new ZkConfigUtil("localhost:2181");
-  app.register(Demo.class, true);</p>
+<p>}</p>
+
+<hr><p>ZkConfigUtil app = ZkConfigUtilFactory.getZkConfigUtil("localhost:2181");
+app.register(Demo.class, true);</p>
 
 <hr><h3>
 <a name="detail" class="anchor" href="#detail"><span class="octicon octicon-link"></span></a>detail</h3>
