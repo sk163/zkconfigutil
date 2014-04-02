@@ -21,6 +21,7 @@ public final class DemoResolve {
 		
 	}
 	
+	
 	public static final class DemoF2Resolve extends AbstractResolve{
 
 		@Override
