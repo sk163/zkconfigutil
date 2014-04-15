@@ -32,17 +32,17 @@ public final class ReflectResolve extends AbstractResolve {
 		Class<?> type = field.getType();
 		if (type == String.class) {
 			value = src;
-		} else if (type == Boolean.class) {
+		} else if (type == Boolean.class || type == boolean.class) {
 			value = Boolean.valueOf(src);
-		} else if (type == Integer.class) {
+		} else if (type == Integer.class || type == int.class) {
 			value = Integer.valueOf(src);
-		} else if (type == Long.class) {
+		} else if (type == Long.class || type == long.class) {
 			value = Long.valueOf(src);
-		} else if (type == Double.class) {
+		} else if (type == Double.class || type == double.class) {
 			value = Double.valueOf(src);
-		} else if (type == Float.class) {
+		} else if (type == Float.class || type == float.class) {
 			value = Float.valueOf(src);
-		} else if (type == Short.class) {
+		} else if (type == Short.class || type == short.class) {
 			value = Short.valueOf(src);
 		} else if (VisualType.class.isAssignableFrom(type)) {
 			try {
