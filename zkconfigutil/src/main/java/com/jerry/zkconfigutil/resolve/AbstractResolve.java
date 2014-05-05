@@ -3,7 +3,6 @@ package com.jerry.zkconfigutil.resolve;
 import org.apache.log4j.Logger;
 
 /**
- * nothing 
  * just for class<? extends Resolve>.newInstance()
  * provide noarg constructor
  * @author jerry
