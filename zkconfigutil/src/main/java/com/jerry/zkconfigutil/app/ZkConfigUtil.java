@@ -53,8 +53,12 @@ public final class ZkConfigUtil implements IZkDataListener {
 			zkClient = this.makeZkClient(this.globalZkServer);
 		}
 
-		final String path = this.makeZkPath(typeZkConfigurable.path(),
-				cla.getSimpleName());
+		String rootPath = typeZkConfigurable.path().trim();
+		if ("".equals(rootPath)) {
+			rootPath = cla.getPackage().getName();
+			rootPath = rootPath.replaceAll("\\.", "/");
+		}
+		final String path = this.makeZkPath(rootPath, cla.getSimpleName());
 
 		final Field[] fields = cla.getDeclaredFields();
 
