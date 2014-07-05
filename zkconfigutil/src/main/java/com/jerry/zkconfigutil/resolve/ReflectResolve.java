@@ -59,6 +59,7 @@ public final class ReflectResolve extends AbstractResolve {
 			return;
 		}
 		try {
+			field.setAccessible(true);
 			field.set(cla, value);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
