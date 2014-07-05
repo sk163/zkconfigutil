@@ -10,10 +10,10 @@ import com.jerry.zkconfigutil.visual.VisualType;
  * @author JERRY
  * 
  */
-@TypeZkConfigurable(path = "/test/jerry", server = "localhost:2181", useOwnZkServer = false)
+@TypeZkConfigurable
 public final class Demo {
 
-	@FieldZkConfigurable(resolve = DemoResolve.DemoF1Resolve.class, dynamicUpdate = true)
+	@FieldZkConfigurable(dynamicUpdate = true)
 	public static String F1 = "F1";
 
 	@FieldZkConfigurable(dynamicUpdate = true)
@@ -22,10 +22,9 @@ public final class Demo {
 	@FieldZkConfigurable(dynamicUpdate = true)
 	public static Boolean F3 = false;
 
-	@FieldZkConfigurable(dynamicUpdate = true)
+	@FieldZkConfigurable
 	public static Boolean F4 = true;
 
-	@FieldZkConfigurable(dynamicUpdate = true)
 	public static TestVisualType testVisualType = new TestVisualType();
 
 	static class TestVisualType extends VisualType {
