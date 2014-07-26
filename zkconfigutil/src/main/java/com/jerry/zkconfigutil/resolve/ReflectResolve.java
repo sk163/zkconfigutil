@@ -52,7 +52,6 @@ public final class ReflectResolve extends AbstractResolve {
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 			}
-			;
 		} else {
 			logger.warn("dosent have this type and return : "
 					+ type.getSimpleName());
