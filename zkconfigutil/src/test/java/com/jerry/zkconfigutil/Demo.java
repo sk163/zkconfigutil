@@ -14,13 +14,13 @@ import com.jerry.zkconfigutil.visual.VisualType;
 public final class Demo {
 
 	@FieldZkConfigurable(dynamicUpdate = true)
-	public static String F1 = "F1";
+	public static volatile String F1 = "F1";
 
 	@FieldZkConfigurable(dynamicUpdate = true)
-	public static String F2 = "F2";
+	public static volatile String F2 = "F2";
 
 	@FieldZkConfigurable(dynamicUpdate = true)
-	public static Boolean F3 = false;
+	public static volatile Boolean F3 = false;
 
 	@FieldZkConfigurable
 	public static Boolean F4 = true;
