@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import com.jerry.zkconfigutil.annotation.FieldZkConfigurable;
 import com.jerry.zkconfigutil.annotation.TypeZkConfigurable;
 import com.jerry.zkconfigutil.exception.NotRegistedException;
+import com.jerry.zkconfigutil.help.SignalHelper;
 import com.jerry.zkconfigutil.resolve.AbstractResolve;
 import com.jerry.zkconfigutil.resolve.ReflectResolve;
 import com.jerry.zkconfigutil.resolve.Resolve;
@@ -104,6 +105,12 @@ public final class ZkConfigUtil implements IZkDataListener {
 				 */
 				resolveInstance.dResolve(value);
 			}
+			
+			
+			/**
+			 * for USR2 signal
+			 */
+			SignalHelper.mark(cla, fieldPath, resolveInstance, fieldZkConfigurable.dynamicUpdate());
 
 			if (fieldZkConfigurable.dynamicUpdate()) {
 				logger.debug("dynamicUpdate " + fieldPath);
