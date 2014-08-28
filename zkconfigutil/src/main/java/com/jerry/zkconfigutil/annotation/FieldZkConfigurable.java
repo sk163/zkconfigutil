@@ -34,6 +34,8 @@ public @interface FieldZkConfigurable {
 	/**
 	 * useless
 	 * @return
+	 * 
+	 * @deprecated
 	 */
 	@Deprecated()
 	String defaultValue() default "";
