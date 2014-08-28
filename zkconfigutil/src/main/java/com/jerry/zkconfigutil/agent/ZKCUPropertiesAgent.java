@@ -16,6 +16,8 @@ public class ZKCUPropertiesAgent {
 	 * @param agentOps
 	 *            -DZK=LOCALHOST:2181 -DCLASS=",,,,,"
 	 * @param inst
+	 * 
+	 *	 java agent
 	 */
 	public static void premain(String agentOps, Instrumentation inst) {
 		logger.info("premain into ...");

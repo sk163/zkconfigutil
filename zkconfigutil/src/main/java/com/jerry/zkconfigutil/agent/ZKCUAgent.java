@@ -17,6 +17,8 @@ public class ZKCUAgent {
 	 * @param agentOps
 	 *            zk@s1,s2#class@c1,c2,c3
 	 * @param inst
+	 * 
+	 * java agent
 	 */
 	public static void premain(String agentOps, Instrumentation inst) {
 		logger.info("premain into ...");
