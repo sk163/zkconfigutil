@@ -122,6 +122,7 @@ public final class ZkConfigUtil implements IZkDataListener {
 
 	private final Map<String, ZkClient> zkClientCache = new HashMap<String, ZkClient>(
 			4);
+	private final StringZkSerializer stringZkSerializer = new StringZkSerializer();
 
 	private final ZkClient makeZkClient(String server) {
 
@@ -129,7 +130,7 @@ public final class ZkConfigUtil implements IZkDataListener {
 			return this.zkClientCache.get(server);
 
 		final ZkClient zkClient = new ZkClient(server, 30000, 30000,
-				new StringZkSerializer());
+				this.stringZkSerializer);
 		this.zkClientCache.put(server, zkClient);
 		return zkClient;
 	}
