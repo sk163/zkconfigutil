@@ -49,7 +49,9 @@ public class SignalHelper {
 		@Override
 		public String toString() {
 			return "SonHelper [claz=" + claz + ", fieldName=" + fieldName
-					+ ", resolve=" + resolve + ", update=" + update + "]";
+					+ ", value=" + resolve.resolve() + ", resolve="
+					+ resolve.getClass().getSimpleName() + ", update=" + update
+					+ "]";
 		}
 	}
 }
