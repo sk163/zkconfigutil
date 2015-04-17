@@ -22,12 +22,26 @@ public final class ZkConfigUtil implements IZkDataListener {
 
 	private final Logger logger = Logger.getLogger(ZkConfigUtil.class);
 	private final String globalZkServer;
+	private final String globalPath;
 
 	public ZkConfigUtil(String globalZkServer) {
 		this.globalZkServer = globalZkServer;
+		this.globalPath = "/";
+	}
+
+	public ZkConfigUtil(String globalZkServer, String globalPath) {
+		this.globalZkServer = globalZkServer;
+		this.globalPath = globalPath;
 	}
 
 	public final synchronized void register(Class<?> cla, boolean isCreateIfNUll)
+			throws NotRegistedException, InstantiationException,
+			IllegalAccessException {
+		this.register(cla, isCreateIfNUll, this.globalPath);
+	}
+
+	public final synchronized void register(Class<?> cla,
+			boolean isCreateIfNUll, String rootPath)
 			throws NotRegistedException, InstantiationException,
 			IllegalAccessException {
 		if (!cla.isAnnotationPresent(TypeZkConfigurable.class)) {
@@ -53,12 +67,10 @@ public final class ZkConfigUtil implements IZkDataListener {
 			}
 			zkClient = this.makeZkClient(this.globalZkServer);
 		}
+		String packagePath = cla.getPackage().getName();
+		packagePath = packagePath.replaceAll("\\.", "/");
 
-		String rootPath = typeZkConfigurable.path().trim();
-		if ("".equals(rootPath)) {
-			rootPath = cla.getPackage().getName();
-			rootPath = rootPath.replaceAll("\\.", "/");
-		}
+		rootPath = this.makeZkPath(rootPath, packagePath);
 		final String path = this.makeZkPath(rootPath, cla.getSimpleName());
 
 		final Field[] fields = cla.getDeclaredFields();
@@ -105,12 +117,12 @@ public final class ZkConfigUtil implements IZkDataListener {
 				 */
 				resolveInstance.dResolve(value);
 			}
-			
-			
+
 			/**
 			 * for USR2 signal
 			 */
-			SignalHelper.mark(cla, fieldPath, resolveInstance, fieldZkConfigurable.dynamicUpdate());
+			SignalHelper.mark(cla, fieldPath, resolveInstance,
+					fieldZkConfigurable.dynamicUpdate());
 
 			if (fieldZkConfigurable.dynamicUpdate()) {
 				logger.debug("dynamicUpdate " + fieldPath);

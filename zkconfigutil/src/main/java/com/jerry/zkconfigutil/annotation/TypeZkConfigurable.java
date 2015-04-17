@@ -20,6 +20,7 @@ public @interface TypeZkConfigurable {
 	 * base path on zookeeper
 	 * @return
 	 */
+	@Deprecated
 	String path() default "";
 	/**
 	 * if use this zookeeper server default false
