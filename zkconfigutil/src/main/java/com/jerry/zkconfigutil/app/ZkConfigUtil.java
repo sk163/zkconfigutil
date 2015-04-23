@@ -71,7 +71,9 @@ public final class ZkConfigUtil implements IZkDataListener {
 		packagePath = packagePath.replaceAll("\\.", "/");
 
 		rootPath = this.makeZkPath(rootPath, packagePath);
-		final String path = this.makeZkPath(rootPath, cla.getSimpleName());
+		String path = this.makeZkPath(rootPath, cla.getName());
+
+		path = path.replace("$", "/"); // inclass
 
 		final Field[] fields = cla.getDeclaredFields();
 
